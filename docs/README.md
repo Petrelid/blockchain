@@ -13,6 +13,7 @@
 - [DEPLOYMENT.md](DEPLOYMENT.md) — deployment checklist
 - [../DEPLOYMENTS.md](../DEPLOYMENTS.md) — deployment records and template
 - [UPGRADES.md](UPGRADES.md) — why there's no upgrade hook
+- [DISASTER_RECOVERY.md](DISASTER_RECOVERY.md) — migrating to a new contract id when a deployment must be replaced
 - [GAS_AND_FEES.md](GAS_AND_FEES.md) — fee model
 - [INDUSTRIES.md](INDUSTRIES.md) — supported categories
 - [GLOSSARY.md](GLOSSARY.md) — terminology
