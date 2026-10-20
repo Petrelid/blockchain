@@ -1131,6 +1131,12 @@ impl TicketingContract {
         if ticket_ids.len() > MAX_BATCH_SIZE {
             return Err(Error::BatchTooLarge);
         }
+        // Issue #322: reject a self-transfer. It would otherwise consume a
+        // slot against the per-ticket transfer limit and clear the resale
+        // price and any gift claim without moving ownership.
+        if from == to {
+            return Err(Error::SelfTransfer);
+        }
         for ticket_id in ticket_ids.iter() {
             let mut ticket = Self::get_ticket_inner(&env, ticket_id)?;
             if ticket.owner != from {
