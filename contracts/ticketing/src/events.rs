@@ -170,16 +170,18 @@ pub struct OfferAccepted {
 
 #[contractevent]
 #[derive(Clone, Debug, Eq, PartialEq)]
-/// Emitted when an organizer registers a new event (issue #119).
+/// Emitted by `create_event` and `create_event_with_options` after the event
+/// is saved (issue #119).
 pub struct EventCreated {
     #[topic]
     pub organizer: Address,
+    #[topic]
     pub event_id: u64,
 }
 
 #[contractevent]
 #[derive(Clone, Debug, Eq, PartialEq)]
-/// Emitted when a ticket is sold through `purchase_primary` (issue #118).
+/// Emitted by `purchase_primary` after the ticket is minted (issue #118).
 pub struct PrimarySale {
     #[topic]
     pub ticket_id: u64,
@@ -189,7 +191,7 @@ pub struct PrimarySale {
 
 #[contractevent]
 #[derive(Clone, Debug, Eq, PartialEq)]
-/// Emitted when a ticket is listed for resale through `list_for_resale` (issue #116).
+/// Emitted by `list_for_resale` after the listing is saved (issue #116).
 pub struct TicketListed {
     #[topic]
     pub ticket_id: u64,
@@ -199,7 +201,7 @@ pub struct TicketListed {
 
 #[contractevent]
 #[derive(Clone, Debug, Eq, PartialEq)]
-/// Emitted when a resale listing is cancelled through `cancel_resale` (issue #116).
+/// Emitted by `cancel_resale` after the listing is removed (issue #116).
 pub struct ListingCancelled {
     #[topic]
     pub ticket_id: u64,
@@ -208,7 +210,8 @@ pub struct ListingCancelled {
 
 #[contractevent]
 #[derive(Clone, Debug, Eq, PartialEq)]
-/// Emitted when a resale listing is bought through `buy_resale` (issue #117).
+/// Emitted by `buy_resale` after ownership and the royalty split are settled
+/// (issue #117).
 pub struct TicketResold {
     #[topic]
     pub ticket_id: u64,
